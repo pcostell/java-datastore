@@ -261,8 +261,8 @@
 
   <modules>
     <module>google-cloud-datastore</module>
-    <module>proto-google-cloud-datastore-v1</module>
     <module>grpc-google-cloud-datastore-v1</module>
+    <module>proto-google-cloud-datastore-v1</module>
     <module>datastore-v1-proto-client</module>
     <module>google-cloud-datastore-bom</module>
   </modules>

@@ -85,8 +85,8 @@ public final class GqlQueryParameter extends com.google.protobuf.GeneratedMessag
             }
           case 26:
             {
-              parameterType_ = input.readBytes();
               parameterTypeCase_ = 3;
+              parameterType_ = input.readBytes();
               break;
             }
           default:
@@ -100,8 +100,6 @@ public final class GqlQueryParameter extends com.google.protobuf.GeneratedMessag
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -753,9 +751,8 @@ public final class GqlQueryParameter extends com.google.protobuf.GeneratedMessag
       } else {
         if (parameterTypeCase_ == 2) {
           valueBuilder_.mergeFrom(value);
-        } else {
-          valueBuilder_.setMessage(value);
         }
+        valueBuilder_.setMessage(value);
       }
       parameterTypeCase_ = 2;
       return this;

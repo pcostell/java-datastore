@@ -111,8 +111,6 @@ public final class Filter extends com.google.protobuf.GeneratedMessageV3
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -777,9 +775,8 @@ public final class Filter extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (filterTypeCase_ == 1) {
           compositeFilterBuilder_.mergeFrom(value);
-        } else {
-          compositeFilterBuilder_.setMessage(value);
         }
+        compositeFilterBuilder_.setMessage(value);
       }
       filterTypeCase_ = 1;
       return this;
@@ -987,9 +984,8 @@ public final class Filter extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (filterTypeCase_ == 2) {
           propertyFilterBuilder_.mergeFrom(value);
-        } else {
-          propertyFilterBuilder_.setMessage(value);
         }
+        propertyFilterBuilder_.setMessage(value);
       }
       filterTypeCase_ = 2;
       return this;

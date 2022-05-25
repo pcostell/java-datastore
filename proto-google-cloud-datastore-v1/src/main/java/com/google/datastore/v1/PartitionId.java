@@ -36,7 +36,8 @@ package com.google.datastore.v1;
  * contexts.
  * Foreign partition IDs (in which the project ID does
  * not match the context project ID ) are discouraged.
- * Reads and writes of foreign partition IDs may fail if the project is not in an active state.
+ * Reads and writes of foreign partition IDs may fail if the project is not in
+ * an active state.
  * </pre>
  *
  * Protobuf type {@code google.datastore.v1.PartitionId}
@@ -110,8 +111,6 @@ public final class PartitionId extends com.google.protobuf.GeneratedMessageV3
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -417,7 +416,8 @@ public final class PartitionId extends com.google.protobuf.GeneratedMessageV3
    * contexts.
    * Foreign partition IDs (in which the project ID does
    * not match the context project ID ) are discouraged.
-   * Reads and writes of foreign partition IDs may fail if the project is not in an active state.
+   * Reads and writes of foreign partition IDs may fail if the project is not in
+   * an active state.
    * </pre>
    *
    * Protobuf type {@code google.datastore.v1.PartitionId}

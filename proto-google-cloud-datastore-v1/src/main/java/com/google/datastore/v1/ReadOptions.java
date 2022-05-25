@@ -77,23 +77,8 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
             }
           case 18:
             {
-              consistencyType_ = input.readBytes();
               consistencyTypeCase_ = 2;
-              break;
-            }
-          case 34:
-            {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (consistencyTypeCase_ == 4) {
-                subBuilder = ((com.google.protobuf.Timestamp) consistencyType_).toBuilder();
-              }
-              consistencyType_ =
-                  input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((com.google.protobuf.Timestamp) consistencyType_);
-                consistencyType_ = subBuilder.buildPartial();
-              }
-              consistencyTypeCase_ = 4;
+              consistencyType_ = input.readBytes();
               break;
             }
           default:
@@ -107,8 +92,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -300,7 +283,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     READ_CONSISTENCY(1),
     TRANSACTION(2),
-    READ_TIME(4),
     CONSISTENCYTYPE_NOT_SET(0);
     private final int value;
 
@@ -323,8 +305,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
           return READ_CONSISTENCY;
         case 2:
           return TRANSACTION;
-        case 4:
-          return READ_TIME;
         case 0:
           return CONSISTENCYTYPE_NOT_SET;
         default:
@@ -439,63 +419,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
     return com.google.protobuf.ByteString.EMPTY;
   }
 
-  public static final int READ_TIME_FIELD_NUMBER = 4;
-  /**
-   *
-   *
-   * <pre>
-   * Reads entities as they were at the given time. This may not be older
-   * than 270 seconds.  This value is only supported for Cloud Firestore in
-   * Datastore mode.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 4;</code>
-   *
-   * @return Whether the readTime field is set.
-   */
-  @java.lang.Override
-  public boolean hasReadTime() {
-    return consistencyTypeCase_ == 4;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Reads entities as they were at the given time. This may not be older
-   * than 270 seconds.  This value is only supported for Cloud Firestore in
-   * Datastore mode.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 4;</code>
-   *
-   * @return The readTime.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getReadTime() {
-    if (consistencyTypeCase_ == 4) {
-      return (com.google.protobuf.Timestamp) consistencyType_;
-    }
-    return com.google.protobuf.Timestamp.getDefaultInstance();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Reads entities as they were at the given time. This may not be older
-   * than 270 seconds.  This value is only supported for Cloud Firestore in
-   * Datastore mode.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 4;</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getReadTimeOrBuilder() {
-    if (consistencyTypeCase_ == 4) {
-      return (com.google.protobuf.Timestamp) consistencyType_;
-    }
-    return com.google.protobuf.Timestamp.getDefaultInstance();
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -516,9 +439,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
     if (consistencyTypeCase_ == 2) {
       output.writeBytes(2, (com.google.protobuf.ByteString) consistencyType_);
     }
-    if (consistencyTypeCase_ == 4) {
-      output.writeMessage(4, (com.google.protobuf.Timestamp) consistencyType_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -537,11 +457,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
       size +=
           com.google.protobuf.CodedOutputStream.computeBytesSize(
               2, (com.google.protobuf.ByteString) consistencyType_);
-    }
-    if (consistencyTypeCase_ == 4) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeMessageSize(
-              4, (com.google.protobuf.Timestamp) consistencyType_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -566,9 +481,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
       case 2:
         if (!getTransaction().equals(other.getTransaction())) return false;
         break;
-      case 4:
-        if (!getReadTime().equals(other.getReadTime())) return false;
-        break;
       case 0:
       default:
     }
@@ -591,10 +503,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
       case 2:
         hash = (37 * hash) + TRANSACTION_FIELD_NUMBER;
         hash = (53 * hash) + getTransaction().hashCode();
-        break;
-      case 4:
-        hash = (37 * hash) + READ_TIME_FIELD_NUMBER;
-        hash = (53 * hash) + getReadTime().hashCode();
         break;
       case 0:
       default:
@@ -777,13 +685,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
       if (consistencyTypeCase_ == 2) {
         result.consistencyType_ = consistencyType_;
       }
-      if (consistencyTypeCase_ == 4) {
-        if (readTimeBuilder_ == null) {
-          result.consistencyType_ = consistencyType_;
-        } else {
-          result.consistencyType_ = readTimeBuilder_.build();
-        }
-      }
       result.consistencyTypeCase_ = consistencyTypeCase_;
       onBuilt();
       return result;
@@ -843,11 +744,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
         case TRANSACTION:
           {
             setTransaction(other.getTransaction());
-            break;
-          }
-        case READ_TIME:
-          {
-            mergeReadTime(other.getReadTime());
             break;
           }
         case CONSISTENCYTYPE_NOT_SET:
@@ -1098,233 +994,6 @@ public final class ReadOptions extends com.google.protobuf.GeneratedMessageV3
         onChanged();
       }
       return this;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        readTimeBuilder_;
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     *
-     * @return Whether the readTime field is set.
-     */
-    @java.lang.Override
-    public boolean hasReadTime() {
-      return consistencyTypeCase_ == 4;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     *
-     * @return The readTime.
-     */
-    @java.lang.Override
-    public com.google.protobuf.Timestamp getReadTime() {
-      if (readTimeBuilder_ == null) {
-        if (consistencyTypeCase_ == 4) {
-          return (com.google.protobuf.Timestamp) consistencyType_;
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      } else {
-        if (consistencyTypeCase_ == 4) {
-          return readTimeBuilder_.getMessage();
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    public Builder setReadTime(com.google.protobuf.Timestamp value) {
-      if (readTimeBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        consistencyType_ = value;
-        onChanged();
-      } else {
-        readTimeBuilder_.setMessage(value);
-      }
-      consistencyTypeCase_ = 4;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    public Builder setReadTime(com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (readTimeBuilder_ == null) {
-        consistencyType_ = builderForValue.build();
-        onChanged();
-      } else {
-        readTimeBuilder_.setMessage(builderForValue.build());
-      }
-      consistencyTypeCase_ = 4;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    public Builder mergeReadTime(com.google.protobuf.Timestamp value) {
-      if (readTimeBuilder_ == null) {
-        if (consistencyTypeCase_ == 4
-            && consistencyType_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          consistencyType_ =
-              com.google.protobuf.Timestamp.newBuilder(
-                      (com.google.protobuf.Timestamp) consistencyType_)
-                  .mergeFrom(value)
-                  .buildPartial();
-        } else {
-          consistencyType_ = value;
-        }
-        onChanged();
-      } else {
-        if (consistencyTypeCase_ == 4) {
-          readTimeBuilder_.mergeFrom(value);
-        } else {
-          readTimeBuilder_.setMessage(value);
-        }
-      }
-      consistencyTypeCase_ = 4;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    public Builder clearReadTime() {
-      if (readTimeBuilder_ == null) {
-        if (consistencyTypeCase_ == 4) {
-          consistencyTypeCase_ = 0;
-          consistencyType_ = null;
-          onChanged();
-        }
-      } else {
-        if (consistencyTypeCase_ == 4) {
-          consistencyTypeCase_ = 0;
-          consistencyType_ = null;
-        }
-        readTimeBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getReadTimeBuilder() {
-      return getReadTimeFieldBuilder().getBuilder();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.TimestampOrBuilder getReadTimeOrBuilder() {
-      if ((consistencyTypeCase_ == 4) && (readTimeBuilder_ != null)) {
-        return readTimeBuilder_.getMessageOrBuilder();
-      } else {
-        if (consistencyTypeCase_ == 4) {
-          return (com.google.protobuf.Timestamp) consistencyType_;
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Reads entities as they were at the given time. This may not be older
-     * than 270 seconds.  This value is only supported for Cloud Firestore in
-     * Datastore mode.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        getReadTimeFieldBuilder() {
-      if (readTimeBuilder_ == null) {
-        if (!(consistencyTypeCase_ == 4)) {
-          consistencyType_ = com.google.protobuf.Timestamp.getDefaultInstance();
-        }
-        readTimeBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Timestamp,
-                com.google.protobuf.Timestamp.Builder,
-                com.google.protobuf.TimestampOrBuilder>(
-                (com.google.protobuf.Timestamp) consistencyType_,
-                getParentForChildren(),
-                isClean());
-        consistencyType_ = null;
-      }
-      consistencyTypeCase_ = 4;
-      onChanged();
-      ;
-      return readTimeBuilder_;
     }
 
     @java.lang.Override

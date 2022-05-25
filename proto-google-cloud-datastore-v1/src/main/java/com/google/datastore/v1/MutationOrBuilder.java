@@ -179,9 +179,8 @@ public interface MutationOrBuilder
    *
    *
    * <pre>
-   * The version of the entity that this mutation is being applied
-   * to. If this does not match the current version on the server, the
-   * mutation conflicts.
+   * The version of the entity that this mutation is being applied to. If this
+   * does not match the current version on the server, the mutation conflicts.
    * </pre>
    *
    * <code>int64 base_version = 8;</code>
@@ -193,9 +192,8 @@ public interface MutationOrBuilder
    *
    *
    * <pre>
-   * The version of the entity that this mutation is being applied
-   * to. If this does not match the current version on the server, the
-   * mutation conflicts.
+   * The version of the entity that this mutation is being applied to. If this
+   * does not match the current version on the server, the mutation conflicts.
    * </pre>
    *
    * <code>int64 base_version = 8;</code>
@@ -203,47 +201,6 @@ public interface MutationOrBuilder
    * @return The baseVersion.
    */
   long getBaseVersion();
-
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   *
-   * @return Whether the updateTime field is set.
-   */
-  boolean hasUpdateTime();
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   *
-   * @return The updateTime.
-   */
-  com.google.protobuf.Timestamp getUpdateTime();
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder();
 
   public com.google.datastore.v1.Mutation.OperationCase getOperationCase();
 

@@ -120,21 +120,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
               snapshotVersion_ = input.readInt64();
               break;
             }
-          case 66:
-            {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (readTime_ != null) {
-                subBuilder = readTime_.toBuilder();
-              }
-              readTime_ =
-                  input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(readTime_);
-                readTime_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -146,8 +131,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -602,76 +585,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
     return snapshotVersion_;
   }
 
-  public static final int READ_TIME_FIELD_NUMBER = 8;
-  private com.google.protobuf.Timestamp readTime_;
-  /**
-   *
-   *
-   * <pre>
-   * Read timestamp this batch was returned from.
-   * This applies to the range of results from the query's `start_cursor` (or
-   * the beginning of the query if no cursor was given) to this batch's
-   * `end_cursor` (not the query's `end_cursor`).
-   * In a single transaction, subsequent query result batches for the same query
-   * can have a greater timestamp. Each batch's read timestamp
-   * is valid for all preceding batches.
-   * This value will not be set for eventually consistent queries in Cloud
-   * Datastore.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 8;</code>
-   *
-   * @return Whether the readTime field is set.
-   */
-  @java.lang.Override
-  public boolean hasReadTime() {
-    return readTime_ != null;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Read timestamp this batch was returned from.
-   * This applies to the range of results from the query's `start_cursor` (or
-   * the beginning of the query if no cursor was given) to this batch's
-   * `end_cursor` (not the query's `end_cursor`).
-   * In a single transaction, subsequent query result batches for the same query
-   * can have a greater timestamp. Each batch's read timestamp
-   * is valid for all preceding batches.
-   * This value will not be set for eventually consistent queries in Cloud
-   * Datastore.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 8;</code>
-   *
-   * @return The readTime.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getReadTime() {
-    return readTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : readTime_;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * Read timestamp this batch was returned from.
-   * This applies to the range of results from the query's `start_cursor` (or
-   * the beginning of the query if no cursor was given) to this batch's
-   * `end_cursor` (not the query's `end_cursor`).
-   * In a single transaction, subsequent query result batches for the same query
-   * can have a greater timestamp. Each batch's read timestamp
-   * is valid for all preceding batches.
-   * This value will not be set for eventually consistent queries in Cloud
-   * Datastore.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp read_time = 8;</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getReadTimeOrBuilder() {
-    return getReadTime();
-  }
-
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -710,9 +623,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
     if (snapshotVersion_ != 0L) {
       output.writeInt64(7, snapshotVersion_);
     }
-    if (readTime_ != null) {
-      output.writeMessage(8, getReadTime());
-    }
     unknownFields.writeTo(output);
   }
 
@@ -746,9 +656,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
     if (snapshotVersion_ != 0L) {
       size += com.google.protobuf.CodedOutputStream.computeInt64Size(7, snapshotVersion_);
     }
-    if (readTime_ != null) {
-      size += com.google.protobuf.CodedOutputStream.computeMessageSize(8, getReadTime());
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -771,10 +678,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
     if (!getEndCursor().equals(other.getEndCursor())) return false;
     if (moreResults_ != other.moreResults_) return false;
     if (getSnapshotVersion() != other.getSnapshotVersion()) return false;
-    if (hasReadTime() != other.hasReadTime()) return false;
-    if (hasReadTime()) {
-      if (!getReadTime().equals(other.getReadTime())) return false;
-    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -802,10 +705,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
     hash = (53 * hash) + moreResults_;
     hash = (37 * hash) + SNAPSHOT_VERSION_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getSnapshotVersion());
-    if (hasReadTime()) {
-      hash = (37 * hash) + READ_TIME_FIELD_NUMBER;
-      hash = (53 * hash) + getReadTime().hashCode();
-    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -971,12 +870,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
 
       snapshotVersion_ = 0L;
 
-      if (readTimeBuilder_ == null) {
-        readTime_ = null;
-      } else {
-        readTime_ = null;
-        readTimeBuilder_ = null;
-      }
       return this;
     }
 
@@ -1020,11 +913,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
       result.endCursor_ = endCursor_;
       result.moreResults_ = moreResults_;
       result.snapshotVersion_ = snapshotVersion_;
-      if (readTimeBuilder_ == null) {
-        result.readTime_ = readTime_;
-      } else {
-        result.readTime_ = readTimeBuilder_.build();
-      }
       onBuilt();
       return result;
     }
@@ -1118,9 +1006,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
       }
       if (other.getSnapshotVersion() != 0L) {
         setSnapshotVersion(other.getSnapshotVersion());
-      }
-      if (other.hasReadTime()) {
-        mergeReadTime(other.getReadTime());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1926,257 +1811,6 @@ public final class QueryResultBatch extends com.google.protobuf.GeneratedMessage
       snapshotVersion_ = 0L;
       onChanged();
       return this;
-    }
-
-    private com.google.protobuf.Timestamp readTime_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        readTimeBuilder_;
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     *
-     * @return Whether the readTime field is set.
-     */
-    public boolean hasReadTime() {
-      return readTimeBuilder_ != null || readTime_ != null;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     *
-     * @return The readTime.
-     */
-    public com.google.protobuf.Timestamp getReadTime() {
-      if (readTimeBuilder_ == null) {
-        return readTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : readTime_;
-      } else {
-        return readTimeBuilder_.getMessage();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public Builder setReadTime(com.google.protobuf.Timestamp value) {
-      if (readTimeBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        readTime_ = value;
-        onChanged();
-      } else {
-        readTimeBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public Builder setReadTime(com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (readTimeBuilder_ == null) {
-        readTime_ = builderForValue.build();
-        onChanged();
-      } else {
-        readTimeBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public Builder mergeReadTime(com.google.protobuf.Timestamp value) {
-      if (readTimeBuilder_ == null) {
-        if (readTime_ != null) {
-          readTime_ =
-              com.google.protobuf.Timestamp.newBuilder(readTime_).mergeFrom(value).buildPartial();
-        } else {
-          readTime_ = value;
-        }
-        onChanged();
-      } else {
-        readTimeBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public Builder clearReadTime() {
-      if (readTimeBuilder_ == null) {
-        readTime_ = null;
-        onChanged();
-      } else {
-        readTime_ = null;
-        readTimeBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getReadTimeBuilder() {
-
-      onChanged();
-      return getReadTimeFieldBuilder().getBuilder();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getReadTimeOrBuilder() {
-      if (readTimeBuilder_ != null) {
-        return readTimeBuilder_.getMessageOrBuilder();
-      } else {
-        return readTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : readTime_;
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * Read timestamp this batch was returned from.
-     * This applies to the range of results from the query's `start_cursor` (or
-     * the beginning of the query if no cursor was given) to this batch's
-     * `end_cursor` (not the query's `end_cursor`).
-     * In a single transaction, subsequent query result batches for the same query
-     * can have a greater timestamp. Each batch's read timestamp
-     * is valid for all preceding batches.
-     * This value will not be set for eventually consistent queries in Cloud
-     * Datastore.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp read_time = 8;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        getReadTimeFieldBuilder() {
-      if (readTimeBuilder_ == null) {
-        readTimeBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Timestamp,
-                com.google.protobuf.Timestamp.Builder,
-                com.google.protobuf.TimestampOrBuilder>(
-                getReadTime(), getParentForChildren(), isClean());
-        readTime_ = null;
-      }
-      return readTimeBuilder_;
     }
 
     @java.lang.Override

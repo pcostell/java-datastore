@@ -130,24 +130,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
             }
           case 64:
             {
-              conflictDetectionStrategy_ = input.readInt64();
               conflictDetectionStrategyCase_ = 8;
-              break;
-            }
-          case 90:
-            {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (conflictDetectionStrategyCase_ == 11) {
-                subBuilder =
-                    ((com.google.protobuf.Timestamp) conflictDetectionStrategy_).toBuilder();
-              }
-              conflictDetectionStrategy_ =
-                  input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom((com.google.protobuf.Timestamp) conflictDetectionStrategy_);
-                conflictDetectionStrategy_ = subBuilder.buildPartial();
-              }
-              conflictDetectionStrategyCase_ = 11;
+              conflictDetectionStrategy_ = input.readInt64();
               break;
             }
           default:
@@ -161,8 +145,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
       throw e.setUnfinishedMessage(this);
-    } catch (com.google.protobuf.UninitializedMessageException e) {
-      throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
@@ -246,7 +228,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
           com.google.protobuf.Internal.EnumLite,
           com.google.protobuf.AbstractMessage.InternalOneOfEnum {
     BASE_VERSION(8),
-    UPDATE_TIME(11),
     CONFLICTDETECTIONSTRATEGY_NOT_SET(0);
     private final int value;
 
@@ -267,8 +248,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       switch (value) {
         case 8:
           return BASE_VERSION;
-        case 11:
-          return UPDATE_TIME;
         case 0:
           return CONFLICTDETECTIONSTRATEGY_NOT_SET;
         default:
@@ -506,9 +485,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * The version of the entity that this mutation is being applied
-   * to. If this does not match the current version on the server, the
-   * mutation conflicts.
+   * The version of the entity that this mutation is being applied to. If this
+   * does not match the current version on the server, the mutation conflicts.
    * </pre>
    *
    * <code>int64 base_version = 8;</code>
@@ -523,9 +501,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * The version of the entity that this mutation is being applied
-   * to. If this does not match the current version on the server, the
-   * mutation conflicts.
+   * The version of the entity that this mutation is being applied to. If this
+   * does not match the current version on the server, the mutation conflicts.
    * </pre>
    *
    * <code>int64 base_version = 8;</code>
@@ -538,63 +515,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       return (java.lang.Long) conflictDetectionStrategy_;
     }
     return 0L;
-  }
-
-  public static final int UPDATE_TIME_FIELD_NUMBER = 11;
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   *
-   * @return Whether the updateTime field is set.
-   */
-  @java.lang.Override
-  public boolean hasUpdateTime() {
-    return conflictDetectionStrategyCase_ == 11;
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   *
-   * @return The updateTime.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getUpdateTime() {
-    if (conflictDetectionStrategyCase_ == 11) {
-      return (com.google.protobuf.Timestamp) conflictDetectionStrategy_;
-    }
-    return com.google.protobuf.Timestamp.getDefaultInstance();
-  }
-  /**
-   *
-   *
-   * <pre>
-   * The update time of the entity that this mutation is being applied
-   * to. If this does not match the current update time on the server, the
-   * mutation conflicts.
-   * </pre>
-   *
-   * <code>.google.protobuf.Timestamp update_time = 11;</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
-    if (conflictDetectionStrategyCase_ == 11) {
-      return (com.google.protobuf.Timestamp) conflictDetectionStrategy_;
-    }
-    return com.google.protobuf.Timestamp.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -625,9 +545,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
     }
     if (conflictDetectionStrategyCase_ == 8) {
       output.writeInt64(8, (long) ((java.lang.Long) conflictDetectionStrategy_));
-    }
-    if (conflictDetectionStrategyCase_ == 11) {
-      output.writeMessage(11, (com.google.protobuf.Timestamp) conflictDetectionStrategy_);
     }
     unknownFields.writeTo(output);
   }
@@ -662,11 +579,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       size +=
           com.google.protobuf.CodedOutputStream.computeInt64Size(
               8, (long) ((java.lang.Long) conflictDetectionStrategy_));
-    }
-    if (conflictDetectionStrategyCase_ == 11) {
-      size +=
-          com.google.protobuf.CodedOutputStream.computeMessageSize(
-              11, (com.google.protobuf.Timestamp) conflictDetectionStrategy_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -706,9 +618,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       case 8:
         if (getBaseVersion() != other.getBaseVersion()) return false;
         break;
-      case 11:
-        if (!getUpdateTime().equals(other.getUpdateTime())) return false;
-        break;
       case 0:
       default:
     }
@@ -747,10 +656,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       case 8:
         hash = (37 * hash) + BASE_VERSION_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getBaseVersion());
-        break;
-      case 11:
-        hash = (37 * hash) + UPDATE_TIME_FIELD_NUMBER;
-        hash = (53 * hash) + getUpdateTime().hashCode();
         break;
       case 0:
       default:
@@ -960,13 +865,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       if (conflictDetectionStrategyCase_ == 8) {
         result.conflictDetectionStrategy_ = conflictDetectionStrategy_;
       }
-      if (conflictDetectionStrategyCase_ == 11) {
-        if (updateTimeBuilder_ == null) {
-          result.conflictDetectionStrategy_ = conflictDetectionStrategy_;
-        } else {
-          result.conflictDetectionStrategy_ = updateTimeBuilder_.build();
-        }
-      }
       result.operationCase_ = operationCase_;
       result.conflictDetectionStrategyCase_ = conflictDetectionStrategyCase_;
       onBuilt();
@@ -1048,11 +946,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
         case BASE_VERSION:
           {
             setBaseVersion(other.getBaseVersion());
-            break;
-          }
-        case UPDATE_TIME:
-          {
-            mergeUpdateTime(other.getUpdateTime());
             break;
           }
         case CONFLICTDETECTIONSTRATEGY_NOT_SET:
@@ -1232,9 +1125,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (operationCase_ == 4) {
           insertBuilder_.mergeFrom(value);
-        } else {
-          insertBuilder_.setMessage(value);
         }
+        insertBuilder_.setMessage(value);
       }
       operationCase_ = 4;
       return this;
@@ -1447,9 +1339,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (operationCase_ == 5) {
           updateBuilder_.mergeFrom(value);
-        } else {
-          updateBuilder_.setMessage(value);
         }
+        updateBuilder_.setMessage(value);
       }
       operationCase_ = 5;
       return this;
@@ -1662,9 +1553,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (operationCase_ == 6) {
           upsertBuilder_.mergeFrom(value);
-        } else {
-          upsertBuilder_.setMessage(value);
         }
+        upsertBuilder_.setMessage(value);
       }
       operationCase_ = 6;
       return this;
@@ -1876,9 +1766,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
       } else {
         if (operationCase_ == 7) {
           deleteBuilder_.mergeFrom(value);
-        } else {
-          deleteBuilder_.setMessage(value);
         }
+        deleteBuilder_.setMessage(value);
       }
       operationCase_ = 7;
       return this;
@@ -1980,9 +1869,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The version of the entity that this mutation is being applied
-     * to. If this does not match the current version on the server, the
-     * mutation conflicts.
+     * The version of the entity that this mutation is being applied to. If this
+     * does not match the current version on the server, the mutation conflicts.
      * </pre>
      *
      * <code>int64 base_version = 8;</code>
@@ -1996,9 +1884,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The version of the entity that this mutation is being applied
-     * to. If this does not match the current version on the server, the
-     * mutation conflicts.
+     * The version of the entity that this mutation is being applied to. If this
+     * does not match the current version on the server, the mutation conflicts.
      * </pre>
      *
      * <code>int64 base_version = 8;</code>
@@ -2015,9 +1902,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The version of the entity that this mutation is being applied
-     * to. If this does not match the current version on the server, the
-     * mutation conflicts.
+     * The version of the entity that this mutation is being applied to. If this
+     * does not match the current version on the server, the mutation conflicts.
      * </pre>
      *
      * <code>int64 base_version = 8;</code>
@@ -2035,9 +1921,8 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The version of the entity that this mutation is being applied
-     * to. If this does not match the current version on the server, the
-     * mutation conflicts.
+     * The version of the entity that this mutation is being applied to. If this
+     * does not match the current version on the server, the mutation conflicts.
      * </pre>
      *
      * <code>int64 base_version = 8;</code>
@@ -2051,233 +1936,6 @@ public final class Mutation extends com.google.protobuf.GeneratedMessageV3
         onChanged();
       }
       return this;
-    }
-
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        updateTimeBuilder_;
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     *
-     * @return Whether the updateTime field is set.
-     */
-    @java.lang.Override
-    public boolean hasUpdateTime() {
-      return conflictDetectionStrategyCase_ == 11;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     *
-     * @return The updateTime.
-     */
-    @java.lang.Override
-    public com.google.protobuf.Timestamp getUpdateTime() {
-      if (updateTimeBuilder_ == null) {
-        if (conflictDetectionStrategyCase_ == 11) {
-          return (com.google.protobuf.Timestamp) conflictDetectionStrategy_;
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      } else {
-        if (conflictDetectionStrategyCase_ == 11) {
-          return updateTimeBuilder_.getMessage();
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    public Builder setUpdateTime(com.google.protobuf.Timestamp value) {
-      if (updateTimeBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        conflictDetectionStrategy_ = value;
-        onChanged();
-      } else {
-        updateTimeBuilder_.setMessage(value);
-      }
-      conflictDetectionStrategyCase_ = 11;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    public Builder setUpdateTime(com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (updateTimeBuilder_ == null) {
-        conflictDetectionStrategy_ = builderForValue.build();
-        onChanged();
-      } else {
-        updateTimeBuilder_.setMessage(builderForValue.build());
-      }
-      conflictDetectionStrategyCase_ = 11;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    public Builder mergeUpdateTime(com.google.protobuf.Timestamp value) {
-      if (updateTimeBuilder_ == null) {
-        if (conflictDetectionStrategyCase_ == 11
-            && conflictDetectionStrategy_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          conflictDetectionStrategy_ =
-              com.google.protobuf.Timestamp.newBuilder(
-                      (com.google.protobuf.Timestamp) conflictDetectionStrategy_)
-                  .mergeFrom(value)
-                  .buildPartial();
-        } else {
-          conflictDetectionStrategy_ = value;
-        }
-        onChanged();
-      } else {
-        if (conflictDetectionStrategyCase_ == 11) {
-          updateTimeBuilder_.mergeFrom(value);
-        } else {
-          updateTimeBuilder_.setMessage(value);
-        }
-      }
-      conflictDetectionStrategyCase_ = 11;
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    public Builder clearUpdateTime() {
-      if (updateTimeBuilder_ == null) {
-        if (conflictDetectionStrategyCase_ == 11) {
-          conflictDetectionStrategyCase_ = 0;
-          conflictDetectionStrategy_ = null;
-          onChanged();
-        }
-      } else {
-        if (conflictDetectionStrategyCase_ == 11) {
-          conflictDetectionStrategyCase_ = 0;
-          conflictDetectionStrategy_ = null;
-        }
-        updateTimeBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getUpdateTimeBuilder() {
-      return getUpdateTimeFieldBuilder().getBuilder();
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    @java.lang.Override
-    public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
-      if ((conflictDetectionStrategyCase_ == 11) && (updateTimeBuilder_ != null)) {
-        return updateTimeBuilder_.getMessageOrBuilder();
-      } else {
-        if (conflictDetectionStrategyCase_ == 11) {
-          return (com.google.protobuf.Timestamp) conflictDetectionStrategy_;
-        }
-        return com.google.protobuf.Timestamp.getDefaultInstance();
-      }
-    }
-    /**
-     *
-     *
-     * <pre>
-     * The update time of the entity that this mutation is being applied
-     * to. If this does not match the current update time on the server, the
-     * mutation conflicts.
-     * </pre>
-     *
-     * <code>.google.protobuf.Timestamp update_time = 11;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp,
-            com.google.protobuf.Timestamp.Builder,
-            com.google.protobuf.TimestampOrBuilder>
-        getUpdateTimeFieldBuilder() {
-      if (updateTimeBuilder_ == null) {
-        if (!(conflictDetectionStrategyCase_ == 11)) {
-          conflictDetectionStrategy_ = com.google.protobuf.Timestamp.getDefaultInstance();
-        }
-        updateTimeBuilder_ =
-            new com.google.protobuf.SingleFieldBuilderV3<
-                com.google.protobuf.Timestamp,
-                com.google.protobuf.Timestamp.Builder,
-                com.google.protobuf.TimestampOrBuilder>(
-                (com.google.protobuf.Timestamp) conflictDetectionStrategy_,
-                getParentForChildren(),
-                isClean());
-        conflictDetectionStrategy_ = null;
-      }
-      conflictDetectionStrategyCase_ = 11;
-      onChanged();
-      ;
-      return updateTimeBuilder_;
     }
 
     @java.lang.Override
